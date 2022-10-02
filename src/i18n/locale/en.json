@@ -1,5 +1,7 @@
 {
   "helloWorld": {
-    "greet": "Hello World....."
+    "greet": "Hello World.....",
+    "increment": "Increment",
+    "decrement": "Decrement"
   }
 }

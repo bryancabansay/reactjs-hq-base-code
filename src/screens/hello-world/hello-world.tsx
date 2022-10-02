@@ -1,8 +1,7 @@
-import React from "react";
 import { observer } from "mobx-react-lite";
 import { useStores } from "../../models";
-import Button from "../../components/button/button";
 import { translate } from "../../i18n/translate";
+import { Button } from "antd";
 
 export const HelloWorld = observer(() => {
   const { countStore } = useStores();
@@ -23,18 +22,12 @@ export const HelloWorld = observer(() => {
         </a>
         <p color="white">{`Count: ${count}`}</p>
         <div>
-          <Button
-            className="side-by-side"
-            type="button"
-            onClick={increment}
-            text="Incredemnt"
-          />{" "}
-          <Button
-            className="side-by-side"
-            type="button"
-            onClick={decrement}
-            text="Decrement"
-          />
+          <Button type="primary" onClick={increment}>
+            {translate("helloWorld.increment")}
+          </Button>{" "}
+          <Button type="primary" onClick={decrement}>
+            {translate("helloWorld.decrement")}
+          </Button>
         </div>
       </header>
     </div>
