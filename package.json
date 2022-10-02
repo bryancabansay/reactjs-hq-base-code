@@ -9,7 +9,7 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
     "@testing-library/user-event": "^13.2.1",
-    "@types/jest": "^27.0.1",
+    "@types/jest": "^29.1.1",
     "@types/node": "^16.7.13",
     "@types/react": "^17.0.20",
     "@types/react-dom": "^17.0.9",
@@ -32,7 +32,7 @@
   "scripts": {
     "start": "cross-env GENERATE_SOURCEMAP=false react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest --watch",
     "eject": "react-scripts eject",
     "postinstall": "npx simple-git-hooks"
   },
@@ -55,9 +55,16 @@
     ]
   },
   "devDependencies": {
+    "@types/enzyme": "^3.10.12",
     "@types/i18n-js": "^3.8.2",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.7",
     "cross-env": "^7.0.3",
-    "simple-git-hooks": "^2.8.0"
+    "enzyme": "^3.11.0",
+    "jest": "^29.1.2",
+    "jest-environment-jsdom": "^29.1.2",
+    "simple-git-hooks": "^2.8.0",
+    "ts-jest": "^29.0.3",
+    "ts-node": "^10.9.1"
   },
   "lint-staged": {
     "**/*": "npx prettier --write --ignore-unknown"
