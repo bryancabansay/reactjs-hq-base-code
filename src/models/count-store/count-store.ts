@@ -5,12 +5,15 @@ export const CountStoreModel = types
   .props({
     count: types.number,
   })
+  .views((self) => ({
+    showCountWithLabel: () => `Count (Update) ===>>>> : ${self.count}`,
+  }))
   .actions((self) => ({
     increment: () => {
-      self.count = self.count + 1;
+      self.count = self.count + 2;
     },
     decrement: () => {
-      self.count = self.count - 1;
+      self.count = self.count - 5;
     },
   }));
 

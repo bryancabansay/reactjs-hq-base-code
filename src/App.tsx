@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { RootStore, RootStoreProvider, setupRootStore } from "./models";
-import { HelloWorld } from "./screens";
+import { Demo, HelloWorld } from "./screens";
 
 export default function App() {
   const [rootStore, setRootStore] = useState<RootStore | undefined>(undefined);
@@ -21,6 +21,7 @@ export default function App() {
     <RootStoreProvider value={rootStore}>
       <BrowserRouter>
         <Routes>
+          <Route path="/demo" element={<Demo />} />
           <Route path="*" element={<HelloWorld />} />
         </Routes>
       </BrowserRouter>

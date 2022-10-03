@@ -8,6 +8,7 @@ export const HelloWorld = observer(() => {
   const { count } = countStore;
   const increment = () => countStore.increment();
   const decrement = () => countStore.decrement();
+
   return (
     <div className="App">
       <header className="App-header">
@@ -20,7 +21,9 @@ export const HelloWorld = observer(() => {
         >
           Learn React
         </a>
-        <p id="count-text" color="white">{`Count: ${count}`}</p>
+        <p id="count-text" color="white">
+          {countStore.showCountWithLabel()}
+        </p>
         <div>
           <Button id="increment-btn" type="primary" onClick={increment}>
             {translate("helloWorld.increment")}

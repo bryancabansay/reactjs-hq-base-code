@@ -2,7 +2,7 @@ import React from "react";
 import { translate } from "../../i18n";
 import { ButtonProps } from "./button.props";
 
-const Button = (props: ButtonProps) => {
+export const Button = (props: ButtonProps) => {
   const { className, type, onClick, text, tx, children } = props;
 
   // Figure out what to use
@@ -15,5 +15,3 @@ const Button = (props: ButtonProps) => {
     </button>
   );
 };
-
-export default Button;
