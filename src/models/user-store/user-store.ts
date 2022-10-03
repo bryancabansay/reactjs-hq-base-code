@@ -1,10 +1,12 @@
 import { Instance, SnapshotOut, types } from "mobx-state-tree";
+import { getCatFact } from "../../services/api/cat";
 
 export const UserStoreModel = types
   .model("User")
   .props({
     firstName: types.optional(types.string, ""),
     lastName: types.optional(types.string, ""),
+    catFact: types.optional(types.string, ""),
   })
   .views((self) => ({
     getFullName: () => `${self.firstName} ${self.lastName}`,
@@ -22,11 +24,26 @@ export const UserStoreModel = types
       self.firstName = firstName;
       self.lastName = lastName;
     },
+    setCatFact: (fact: string) => {
+      self.catFact = fact;
+    },
+  }))
+  .actions((self) => ({
+    updateCatFact: async () => {
+      let fact = "Server is down";
+      try {
+        fact = await getCatFact();
+      } catch (e) {
+        // Left blank
+      }
+      self.setCatFact(fact);
+    },
   }));
 
 const DEFAULT_STATE = {
   firstName: "",
   lastName: "",
+  catFact: "",
 };
 
 type UserType = Instance<typeof UserStoreModel>;
