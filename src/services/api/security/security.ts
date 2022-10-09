@@ -1,9 +1,9 @@
-import axios from "axios";
-import { log } from "../../config";
+import { axiosInstance } from "../axios-instance";
+import { log } from "../../../config";
 
 export const login = async (username: string, password: string) => {
-  return await axios
-    .post("http://test/com", { username, password })
+  return await axiosInstance
+    .post("/login", { username, password })
     .then((result) => {
       return result.data;
     })
