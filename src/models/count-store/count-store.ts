@@ -5,6 +5,11 @@ export const CountStoreModel = types
   .props({
     count: types.number,
   })
+  .views((self) => ({
+    getCount: () => {
+      return self.count;
+    },
+  }))
   .actions((self) => ({
     increment: () => {
       self.count = self.count + 1;
