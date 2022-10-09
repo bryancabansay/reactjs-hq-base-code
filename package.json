@@ -21,6 +21,7 @@
     "mobx-react-lite": "^3.3.0",
     "mobx-state-tree": "^5.1.3",
     "moment": "^2.29.1",
+    "prettier": "^2.7.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^6.2.2",
@@ -32,7 +33,7 @@
   "scripts": {
     "start": "cross-env GENERATE_SOURCEMAP=false react-scripts start",
     "build": "react-scripts build",
-    "test": "jest --watch",
+    "test": "jest",
     "eject": "react-scripts eject",
     "postinstall": "npx simple-git-hooks"
   },
