@@ -19,7 +19,7 @@ export const CountStoreModel = types
     },
   }));
 
-const DEFAULT_STATE = {
+export const DEFAULT_STATE = {
   count: 0,
 };
 

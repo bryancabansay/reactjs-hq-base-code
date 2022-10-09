@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+
 import { Instance, SnapshotOut, types } from "mobx-state-tree";
 import {
   CountStoreModel,

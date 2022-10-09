@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+
 /**
  * Loads a string from storage.
  *
@@ -5,7 +7,7 @@
  */
 export async function loadString(key: string): Promise<string | null> {
   try {
-    return await localStorage.getItem(key); 
+    return await localStorage.getItem(key);
   } catch {
     return null;
   }

@@ -1,5 +1,5 @@
 import axios, { AxiosInstance } from "axios";
-import { API_KEY, API_URL } from "../../config/properties";
+import { API_KEY, API_URL } from "../../../config/properties";
 
 export const axiosInstance: AxiosInstance = axios.create({
   baseURL: API_URL,

@@ -1,4 +1,5 @@
 // @ts-nocheck
+/* istanbul ignore file */
 import { I18n } from "i18n-js";
 import { en, ja } from "./locale";
 

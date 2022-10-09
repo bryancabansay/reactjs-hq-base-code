@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+
 import i18nJs from "i18n-js";
 import { TxKeyPath, i18n } from "./i18n";
 

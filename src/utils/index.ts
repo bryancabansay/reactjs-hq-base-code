@@ -1,2 +1,2 @@
 export * from "./console/console";
-export * from "./storage";
+export * from "./storage/storage";
