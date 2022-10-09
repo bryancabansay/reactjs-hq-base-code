@@ -78,7 +78,7 @@ Should be strictly followed unless there is an important reason not to.
 
 1. Never use class based components except for [ErrorBoundary](https://reactjs.org/docs/error-boundaries.html) class.
 2. Always use [hooks](https://reactjs.org/docs/hooks-overview.html).
-3. Use [async and await](https://javascript.info/async-await) instead of [promises](https://javascript.info/promise-basics) to prevent then-catch chain hell.
+3. Use [async and await](https://javascript.info/async-await) instead of [promises](https://javascript.info/promise-basics) to prevent then-catch chain hell (except for using axios in API calls).
 4. Always use interfaces for props definition for each component.
 5. Use enums wherever appropriate.
 6. Use color constants for hex colors (/src/theme/color.ts).
@@ -160,6 +160,23 @@ Should be strictly followed unless there is an important reason not to.
    ```
 
 5. The props file should contain the prop definition of the component as an `interface`.
+
+   ```typescript
+   /**
+    * Prop types describing the required and optional props for the buttons.
+    */
+   export interface ButtonProps {
+     /**
+      * The expected method to be called when the button is clicked.
+      */
+     onClick: () => void;
+
+     /**
+      * Text that should be shown in side the button
+      */
+     text: string;
+   }
+   ```
 
 6. The test file should be named `<component-name>.test.tsx`.
 
@@ -289,6 +306,29 @@ Should be strictly followed unless there is an important reason not to.
       export * from "./count-store/count-store";
       ```
 
+   9. Create a test file for the contents of the store. See example below for the CountStore.
+
+      ```typescript
+      import { createCountDefaultModel } from "./count-store";
+
+      describe("CountStoreModel", () => {
+        it("should correctly increase and decrease count.", () => {
+          // setup
+          const snapshot = createCountDefaultModel();
+          const incrementStore = snapshot.create();
+          const decrementStore = snapshot.create();
+
+          // exercise
+          incrementStore.increment();
+          decrementStore.decrement();
+
+          // verify
+          expect(incrementStore.count).toBe(1);
+          expect(decrementStore.count).toBe(-1);
+        });
+      });
+      ```
+
 5. To use the store data inside a component, use the `observer` method from the `mobx-react-lite` library and use the `useStores` hook inside the `src/models/root-store-context.ts` file. The observer function will trigger a check for updates whenever the store values being listened to are updated.
 
    ```typescript
@@ -325,6 +365,76 @@ Should be strictly followed unless there is an important reason not to.
        },
      }));
    ```
+
+<br/>
+
+## G. API Calls
+
+1. Use the `axios` library for API calls.
+2. Use promise then-catch format.
+
+   ```typescript
+   import axiosInstance from "./axios-instance";
+   import { log } from "../../config";
+
+   export const login = async (username: string, password: string) => {
+     return await axiosInstance
+       .post("http://test/com", { username, password })
+       .then((result) => {
+         return result.data;
+       })
+       .catch((error) => {
+         log("Unable to login: ", error);
+         return null;
+       });
+   };
+   ```
+
+3. Always log the error returned from the server. The return value should be based on the logic of the API call.
+
+4. For each API endpoint, use only 1 axios instance. Avoid using a new instance of axios every time a request is made. Create a separate `axios-instance.ts` file and import its content. See example below.
+
+   ```typescript
+   // Do not use this for your API calls.
+   // This creates a new instance of axios every time
+   import axios from "axios";
+
+   // Inside axios-instance.ts
+   import axios, { AxiosInstance } from "axios";
+   import { API_KEY, API_URL } from "../../config/properties";
+
+   export const axiosInstance: AxiosInstance = axios.create({
+     baseURL: API_URL,
+     timeout: 5000,
+     headers: {
+       "x-api-secret": API_KEY,
+     },
+   });
+
+   export const setToken = (token: string) => {
+     if (token) {
+       axiosInstance.defaults.headers.common.authorization = `Bearer ${token}`;
+     } else {
+       delete axiosInstance.defaults.headers.common.authorization;
+     }
+   };
+
+   // When using an API see step 2 on how to use the axios instance.
+   ```
+
+5. For attaching intercepting requests and responses, use [axios intereceptors](https://axios-http.com/docs/interceptors).
+
+<br/>
+
+## H. Creating Tests
+
+1. Alway use the setup, exercise, verify, and teardown format.
+
+2. Use jest for general testing (functions, models, API calls, etc.).
+
+3. Use enzyme exclusively to test components.
+
+4. Test coverage should be 100%.
 
 <br/>
 
