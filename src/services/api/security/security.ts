@@ -1,5 +1,5 @@
 import { axiosInstance } from "../axios-instance";
-import { log } from "../../../config";
+import { log } from "../../../utils";
 
 export const login = async (username: string, password: string) => {
   return await axiosInstance

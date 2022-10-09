@@ -1,4 +1,4 @@
-import { DEV_MODE } from "./properties";
+import { DEV_MODE } from "../../config";
 
 // This is a test config file
 export const log = (message?: any, ...optionalParams: any[]) => {
