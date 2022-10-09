@@ -33,7 +33,7 @@
   "scripts": {
     "start": "cross-env GENERATE_SOURCEMAP=false react-scripts start",
     "build": "react-scripts build",
-    "test": "jest",
+    "test": "jest --coverage",
     "eject": "react-scripts eject",
     "postinstall": "npx simple-git-hooks"
   },
