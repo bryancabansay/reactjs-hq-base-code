@@ -438,6 +438,31 @@ Should be strictly followed unless there is an important reason not to.
 
 <br/>
 
+# Additional Resources
+
+## Reading
+
+- [Modern Javascript Tutorial](https://javascript.info/) ⭐
+- [React JS Official Documentation](https://reactjs.org/tutorial/tutorial.html) ⭐
+- [What is REST API?](https://www.visual-paradigm.com/guide/development/what-is-rest-api/)
+- [Four-Phase Testing Pattern](https://thoughtbot.com/blog/four-phase-test)
+- [Jest Tutorial](https://www.softwaretestinghelp.com/jest-testing-tutorial/)
+- [How to Test Using Jest and Enzyme](https://pusher.com/tutorials/react-jest-enzyme/)
+
+## Video
+
+- [Typescript Tutorial](https://www.youtube.com/watch?v=d56mG7DezGs&ab_channel=ProgrammingwithMosh)⭐
+- [What is React JS?](https://www.youtube.com/watch?v=Y6aYx_KKM7A&ab_channel=Simplilearn)
+- [ReactJS Tutorial](https://www.youtube.com/watch?v=Ke90Tje7VS0&ab_channel=ProgrammingwithMosh) ⭐
+- [Jest Crash Course](https://www.youtube.com/watch?v=ajiAl5UNzBU&ab_channel=LaithAcademy)
+- [Test Driven Development With Jest and Enzyme](https://www.youtube.com/watch?v=-bmdf1oATQo&ab_channel=Bitfumes)
+
+<br/>
+
+⭐ = Highly Recommended
+
+<br/>
+
 # Notes
 
 - When performing a commit using git, `prettier` is invoked to format the code so that it will have a standardized style. This may cause a slight delay but wil not take too much time.
